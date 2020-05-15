@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for expressCart Project
+name: expressCart
+version: 0.1.0
