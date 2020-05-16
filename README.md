@@ -65,6 +65,7 @@ $ helm install expresscart-mongodb bitnami/mongodb --set mongodbRootPassword=exp
 
 - Open values.yaml in expressCart-chart folder and replace the `repository` with docker-image from image section
 - Replace the `MONGODB_URI` from projectEnv section(if needed)
+- Replace the `hosts` and `tls` with the actual domain which will be useful to access the application outside of the cluster with ssl enabled
 - Install the chart with below command:
 
 ```bash
