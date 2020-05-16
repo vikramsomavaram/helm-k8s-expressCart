@@ -32,16 +32,17 @@ kubectl create namespace ingress
 $ kubectl create namespace expresscart
 ```
 
-### Add official helm repos for certmanager and mongodb
+### Add official helm repos for nginx, certmanager and mongodb
 ```bash
 $ helm repo add jetstack https://charts.jetstack.io
+$ helm repo add stable https://kubernetes-charts.storage.googleapis.com
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm repo update
 ```
 
 ### Deploy nginx-ingress
 ```bash
-$ helm install ingress bitnami/nginx-ingress --set controller.metrics.enabled=true -n ingress
+$ helm install ingress stable/nginx-ingress --set controller.metrics.enabled=true -n ingress
 ```
 
 ### Deploy cert-manager
@@ -54,6 +55,8 @@ $ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --version v0.15.0 \
+
+$ kubectl apply -f cert-manager-issuer.yaml -n expresscart
 ```
 
 ### Deploy mongodb
