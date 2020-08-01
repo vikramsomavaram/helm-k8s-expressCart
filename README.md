@@ -2,6 +2,9 @@
 
 `expressCart` is a fully functional shopping cart built in Node.js (Express, MongoDB) with built in popular payment providers.
 
+## Architecture:
+![Arc Image](expressCart-k8s-Arc.png)
+
 ## Requirements:
 - Kubernetes 1.15+
 - Helm v3
@@ -13,6 +16,9 @@
 - Cert-manager
 - MongoDB
 - ExpressCart application
+- Prometheus
+- Grafana
+- Loki
 
 ## Setup:
 
@@ -74,3 +80,10 @@ $ helm install expresscart-mongodb bitnami/mongodb --set mongodbRootPassword=exp
 ```bash
 $ helm upgrade --force --install expressCart expressCart-chart -f expressCart-chart/values.yaml -n expresscart
 ```
+
+## Monitoring and Logging
+
+- We are using Prometheus/Grafana/Loki stack to aggregate logs and create metrics to track the application behaviour
+- Prometheus - Used to extract and store all the metric data from applications and kubernetes components 
+- Loki - Used to extract and aggregate all the application or container logs running inside kubernetes 
+- Grafana - Used to visualize all the metric and log data that comes from prometheus and loki
